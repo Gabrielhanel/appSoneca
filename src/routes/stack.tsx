@@ -6,7 +6,7 @@ import { FilterHistoric } from "../screens/Historic/filterHistoric";
 import { PropsStackRoutes } from "./interfaces";
 import { Feather } from "@react-native-vector-icons/feather";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
+import { SaveSleepDay } from "../screens/SaveSleepDay/SaveSleepDay";
 export default function StackNavigationApp() {
   const Tab = createBottomTabNavigator();
   const Stack = createNativeStackNavigator<PropsStackRoutes>();
@@ -71,7 +71,8 @@ options={{
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="TabRoutes" component={TabRoutes} />
       <Stack.Screen name="RegisterSleep" component={RegisterSleep} />
-<Stack.Screen name="FilterHistoric" component={FilterHistoric} />
+  <Stack.Screen name="FilterHistoric" component={FilterHistoric} />
+  <Stack.Screen name="SaveSleepDay" component={SaveSleepDay} />
     </Stack.Navigator>
   );
 }
