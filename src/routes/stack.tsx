@@ -3,17 +3,18 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Home } from "../screens/Home/home";
 import { RegisterSleep } from "../screens/RegisterSleep/registerSleep";
 import { FilterHistoric } from "../screens/Historic/filterHistoric";
-import { PropsStackRoutes } from "./interfaces";
+import { PropsStackRoutes, PropsTabScreens, TabRoutes } from "./interfaces";
 import { Feather } from "@react-native-vector-icons/feather";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SaveSleepDay } from "../screens/SaveSleepDay/SaveSleepDay";
-export default function StackNavigationApp() {
-  const Tab = createBottomTabNavigator();
+
+  const Tab = createBottomTabNavigator<TabRoutes>();
   const Stack = createNativeStackNavigator<PropsStackRoutes>();
-  function TabRoutes() {
+
+ function TabsNavigation() {
     return (
       <Tab.Navigator
-              initialRouteName="Home"
+          initialRouteName="HomeTab"
         screenOptions={{
           headerShown: false,
           tabBarHideOnKeyboard: true,
@@ -31,7 +32,7 @@ export default function StackNavigationApp() {
         }}
       >
 <Tab.Screen
-  name="Home"
+  name="HomeTab"
   component={Home}
   options={{
     tabBarIcon: ({ color, size }) => (
@@ -40,7 +41,7 @@ export default function StackNavigationApp() {
   }}
 />
 <Tab.Screen 
-name="RegisterSleep"
+name="RegisterSleepTab"
 component={RegisterSleep}
 options={{
     tabBarIcon: ({ color, size }) => (
@@ -49,7 +50,7 @@ options={{
 }}
 /> 
 <Tab.Screen 
-name="Historic"
+name="FilterHistoricTab"
 component={FilterHistoric}
 options={{
     tabBarIcon: ({ color, size }) => (
@@ -62,17 +63,17 @@ options={{
     );
   }
 
+export default function StackNavigationApp (){
   return (
     <Stack.Navigator
       id={undefined}
-      initialRouteName="TabRoutes"
+      initialRouteName="Home"
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="TabRoutes" component={TabRoutes} />
+      <Stack.Screen name="Home" component={TabsNavigation} />
       <Stack.Screen name="RegisterSleep" component={RegisterSleep} />
   <Stack.Screen name="FilterHistoric" component={FilterHistoric} />
   <Stack.Screen name="SaveSleepDay" component={SaveSleepDay} />
     </Stack.Navigator>
   );
-}
+  }

@@ -9,9 +9,18 @@ import {
 } from "react-native";
 import Feather from "@react-native-vector-icons/feather";
 import { TimeGreeting } from "../../components/TimeGreeting";
-import { PropsScreensApp } from "../../routes/interfaces";
+import { PropsStackRoutes, PropsTabScreens, TabRoutes } from "../../routes/interfaces";
+import { CompositeScreenProps } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 
-export function Home({ navigation, route} : PropsScreensApp<"Home">) {
+
+type HomeScreenProps = CompositeScreenProps<
+  BottomTabScreenProps<TabRoutes, "HomeTab">,
+  NativeStackScreenProps<PropsStackRoutes>
+>;
+
+export function Home({ navigation, route} : HomeScreenProps) {
 
   return (
     <View style={styles.container}>
