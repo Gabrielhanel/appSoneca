@@ -15,7 +15,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 
 
-type HomeScreenProps = CompositeScreenProps<
+export type HomeScreenProps = CompositeScreenProps<
   BottomTabScreenProps<TabRoutes, "HomeTab">,
   NativeStackScreenProps<PropsStackRoutes>
 >;
